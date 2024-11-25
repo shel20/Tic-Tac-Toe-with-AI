@@ -53,7 +53,7 @@ void mutareOm(char a[3][3], char simbol){
 
 	a[linia][coloana] = simbol;
 
-
+	printf("\nAi mutat:\n");
 
 }
 
@@ -70,7 +70,7 @@ void mutarePC(char a[3][3], char simbol){
 	}
 
 	else {
-//linii
+//linii castig
 		//prima linie
 		if((a[0][1] == simbol && a[0][2] == simbol) && a[0][0] == '_'){
 			a[0][0] = simbol;
@@ -105,15 +105,15 @@ void mutarePC(char a[3][3], char simbol){
 		}
 
 
-//coloane
+//coloane castig
 		//prima coloana
 		else if((a[0][0] == simbol && a[1][0] == simbol) && a[2][0] == '_'){
 			a[2][0] = simbol;
 		}
-		else if((a[1][0] == simbol && a[2][0] == simbol) && a[1][0] == '_'){
+		else if((a[1][0] == simbol && a[2][0] == simbol) && a[0][0] == '_'){
 			a[1][0] = simbol;
 		}
-		else if((a[1][0] == simbol && a[2][0] == simbol) && a[0][0] == '_'){
+		else if((a[0][0] == simbol && a[2][0] == simbol) && a[0][0] == '_'){
 			a[0][0] = simbol;
 		}
 
@@ -145,7 +145,7 @@ void mutarePC(char a[3][3], char simbol){
 			a[2][2] = simbol;
 		}
 		else if((a[2][2] == simbol && a[1][1] == simbol) && a[0][0] == '_'){
-			a[1][1] = simbol;
+			a[0][0] = simbol;
 		}
 		else if((a[0][0] == simbol && a[2][2] == simbol) && a[1][1] == '_'){
 			a[1][1] = simbol;
@@ -204,11 +204,11 @@ void mutarePC(char a[3][3], char simbol){
 		else if( ((a[0][0] != '_' && a[1][0] != '_') && (a[0][0] != simbol && a[1][0] != simbol)) && a[2][0] == '_'){
 			a[2][0] = simbol;
 		}
-		else if( ((a[1][0] != '_' && a[2][0] != '_') && (a[1][0] != simbol && a[2][0] != simbol)) && a[1][0] == '_'){
-			a[1][0] = simbol;
-		}
 		else if( ((a[1][0] != '_' && a[2][0] != '_') && (a[1][0] != simbol && a[2][0] != simbol)) && a[0][0] == '_'){
 			a[0][0] = simbol;
+		}
+		else if( ((a[0][0] != '_' && a[2][0] != '_') && (a[0][0] != simbol && a[2][0] != simbol)) && a[1][0] == '_'){
+			a[1][0] = simbol;
 		}
 
 //a doua coloana
@@ -238,7 +238,7 @@ void mutarePC(char a[3][3], char simbol){
 			a[2][2] = simbol;
 		}
 		else if( ((a[2][2] != '_' && a[1][1] != '_') && (a[2][2] != simbol && a[1][1] != simbol)) && a[0][0] == '_'){
-			a[1][1] = simbol;
+			a[0][0] = simbol;
 		}
 		else if( ((a[0][0] != '_' && a[2][2] != '_') && (a[0][0] != simbol && a[2][2] != simbol)) && a[1][1] == '_'){
 			a[1][1] = simbol;
@@ -573,6 +573,7 @@ int main(void) {
 	if(inceput == 1){
 		while(flag != 1){
 			mutareOm(a, x);
+			
 //			fflush(stdin);
 			afisare(a);
 			flag = final(a, flag);
@@ -582,6 +583,7 @@ int main(void) {
 
 			mutarePC(a, o);
 //			fflush(stdin);
+			printf("\nPc-ul a mutat:\n");
 			afisare(a);
 			flag = final(a, flag);
 			if(flag == 1){
